@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class WSResult<T> implements Serializable {
 
   // -- 返回代码定义 --//
-  public static final Integer SYSTEM_ERROR = -10;
+  public static final Integer SYSTEM_ERROR = -1;
   public static final String SYSTEM_ERROR_MESSAGE = "Runtime unknown internal error.";
 
-  public static final Integer PARAMETER_ERROR = -1;
+  public static final Integer PARAMETER_ERROR = -2;
   public static final String PARAMETER_ERROR_MESSAGE = "Parameter error.";
 
   // 操作结果码
