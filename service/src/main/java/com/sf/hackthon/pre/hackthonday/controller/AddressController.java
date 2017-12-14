@@ -3,6 +3,7 @@ package com.sf.hackthon.pre.hackthonday.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.sf.hackthon.pre.hackthonday.dto.WSResult;
 import com.sf.hackthon.pre.hackthonday.entity.Address;
 import com.sf.hackthon.pre.hackthonday.service.IAddressService;
 import java.util.List;
@@ -33,25 +34,39 @@ public class AddressController {
   // http://127.0.0.1:18080/hackthonday/address/2966
   @ResponseBody
   @GetMapping("/{id}")
-  public Address id(@PathVariable int id) {
+  public WSResult<Address> id(@PathVariable int id) {
+    WSResult<Address> rs = new WSResult<>();
+
     EntityWrapper<Address> ew = new EntityWrapper<>();
     ew.eq("id", id);
-    return iAddressService.selectOne(ew);
+    Address data = iAddressService.selectOne(ew);
+    rs.setData(data);
+    rs.setSuccess();
+
+    return rs;
   }
 
 
   // http://127.0.0.1:18080/hackthonday/address/page?page=20&size=1
   @ResponseBody
   @GetMapping("/page")
-  public List<Address> page(
+  public WSResult<List<Address>> page(
       @RequestParam(value = "page", required = false, defaultValue = "1") int page,
       @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
+
+    WSResult<List<Address>> rs = new WSResult<>();
+
     Page p = new Page(page, size);
 
     EntityWrapper<Address> ew = new EntityWrapper<>();
     ew.where("id>1000");
 
-    return iAddressService.selectPage(p, ew).getRecords();
+    List<Address> data = iAddressService.selectPage(p, ew).getRecords();
+
+    rs.setData(data);
+    rs.setSuccess();
+
+    return rs;
   }
 
 
@@ -59,18 +74,28 @@ public class AddressController {
   // {"code":"450","name":"广西2","parentCode":"CHINA","level":"1","createAt":1398419599000,"updateAt":1398419599000}
   @ResponseBody
   @PostMapping("/insert")
-  public boolean insert(@RequestBody Address address) {
+  public WSResult<Boolean> insert(@RequestBody Address address) {
+    WSResult<Boolean> rs = new WSResult<>();
 
-    return iAddressService.insert(address);
+    Boolean data = iAddressService.insert(address);
+    rs.setData(data);
+    rs.setSuccess();
+
+    return rs;
   }
 
   // http://127.0.0.1:18080/hackthonday/address/update
   // {"id":"2966","name":"广西23"}
   @ResponseBody
   @PostMapping("/update")
-  public boolean update(@RequestBody Address address) {
+  public WSResult<Boolean> update(@RequestBody Address address) {
+    WSResult<Boolean> rs = new WSResult<>();
 
-    return iAddressService.updateById(address);
+    Boolean data = iAddressService.updateById(address);
+    rs.setData(data);
+    rs.setSuccess();
+
+    return rs;
   }
 }
 
