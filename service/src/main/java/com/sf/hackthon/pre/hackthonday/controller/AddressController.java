@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.sf.hackthon.pre.hackthonday.dto.WSResult;
 import com.sf.hackthon.pre.hackthonday.entity.Address;
 import com.sf.hackthon.pre.hackthonday.service.IAddressService;
-import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,18 +49,18 @@ public class AddressController {
   // http://127.0.0.1:18080/hackthonday/address/page?page=20&size=1
   @ResponseBody
   @GetMapping("/page")
-  public WSResult<List<Address>> page(
+  public WSResult<Page<Address>> page(
       @RequestParam(value = "page", required = false, defaultValue = "1") int page,
       @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
 
-    WSResult<List<Address>> rs = new WSResult<>();
+    WSResult<Page<Address>> rs = new WSResult<>();
 
     Page p = new Page(page, size);
 
     EntityWrapper<Address> ew = new EntityWrapper<>();
     ew.where("id>1000");
 
-    List<Address> data = iAddressService.selectPage(p, ew).getRecords();
+    Page<Address> data = iAddressService.selectPage(p, ew);
 
     rs.setData(data);
     rs.setSuccess();
