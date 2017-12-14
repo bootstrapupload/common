@@ -1,0 +1,31 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '8.0'
+
+target 'Hackathons' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for Hackathons
+  pod 'AFNetworking', '~> 3.1.0'
+  pod 'BlocksKit', '~> 2.2.5'
+#  pod 'AliyunOSSiOS', '~> 2.6.2'
+  pod 'YYKit', '~> 1.0.9'
+  pod 'CYLTabBarController', '~> 1.14.1'
+#  pod 'WMPageController', '~> 2.4.1'
+  pod 'MJRefresh', '~> 3.1.12'
+  pod 'TZImagePickerController', '~> 1.8.1'
+  pod 'SCLAlertView-Objective-C', '~> 1.1.2'
+  pod 'IQKeyboardManager', '4.0.10'
+  pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
+  pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'TOWebViewController', '~> 2.2.6'
+  pod 'CustomIOSAlertView', '~> 0.9.5'
+  pod 'YBPopupMenu', '~> 1.0.0'
+  pod 'SDCycleScrollView', '~> 1.73'
+  pod 'LBXScan/LBXNative','~> 2.2'
+  pod 'LBXScan/UI','~> 2.2'
+  pod 'ActionSheetPicker-3.0', '~> 2.2.0'
+  pod 'PGDatePicker', '>= 1.5.4'
+#  pod 'Pgyer'
+#  pod 'PgyUpdate'
+end
