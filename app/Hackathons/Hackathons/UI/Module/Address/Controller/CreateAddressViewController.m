@@ -311,6 +311,7 @@
     
     [HNetwork groupJoinInfo:self.goodModel success:^(NSInteger code, NSString *msg, id obj) {
         ShareViewController *svc = [[ShareViewController alloc] init];
+        svc.goodModel = self.goodsModel;
         [self.navigationController pushViewController:svc animated:YES];
     } failure:^(NSError *error) {
         [MBProgressHUD showInfoMessage:error.domain];

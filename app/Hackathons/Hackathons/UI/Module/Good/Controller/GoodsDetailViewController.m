@@ -52,6 +52,7 @@
 - (IBAction)clickPartin:(id)sender {
         CreateAddressViewController *avc = [[CreateAddressViewController alloc] init];
     avc.groupId = self.goodsModel.ID;
+    avc.goodsModel = self.goodsModel;
         [self.navigationController pushViewController:avc animated:YES];
 }
 

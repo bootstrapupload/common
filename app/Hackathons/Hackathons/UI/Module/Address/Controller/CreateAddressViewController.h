@@ -7,8 +7,9 @@
 //
 
 #import "RootViewController.h"
-
+#import "GoodsModel.h"
 @interface CreateAddressViewController : RootViewController
 @property (nonatomic
            ,assign) NSInteger groupId;
+@property (nonatomic, strong) GoodsModel *goodsModel;
 @end

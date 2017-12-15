@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-
+#import "GoodsModel.h"
 @interface ShareViewController : RootViewController
-
+@property (nonatomic, strong) GoodsModel *goodModel;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ShareViewController.h"
-
+#import <LBXScanNative.h>
 @interface ShareViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *goodName;
 @property (weak, nonatomic) IBOutlet UILabel *goodRequire;
@@ -21,7 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"集货助手";
-    
+    self.goodName.text = self.goodModel.groupName;
+    self.goodRequire.text = NSStringFormat(@"全国流向%ld-%ldkg|每日最低需寄%ld件",self.goodModel.weightMin/1000,self.goodModel.weightMax/1000,self.goodModel.dailyMinPackage);
+    self.img.image = [LBXScanNative createQRWithString:[self.goodModel modelToJSONString] QRSize:self.img.bounds.size QRColor:[UIColor blueColor] bkColor:[UIColor redColor]];
+    [self.btnSave setBackgroundImage:[UIImage imageWithColor:C6] forState:UIControlStateNormal];
     // Do any additional setup after loading the view from its nib.
 }
 
