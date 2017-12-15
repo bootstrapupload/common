@@ -64,7 +64,7 @@ static NSString * kUserDefaultsFCSessionId = @"kUserDefaultsFCSessionId";
 //
     NSURLSessionTask *task = [PPNetworkHelper POST:[self fc_fixedUrl:URLString] parameters:parameters success:^(id responseObject) {
         NSInteger status = [[responseObject objectForKey:kStatus] integerValue];
-        if (status == -1) {
+        if (status == -400) {
             [self handleNeedLogin];
             return ;
         }else if (status != 1){

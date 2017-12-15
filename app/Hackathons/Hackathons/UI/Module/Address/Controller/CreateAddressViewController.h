@@ -9,5 +9,6 @@
 #import "RootViewController.h"
 
 @interface CreateAddressViewController : RootViewController
-
+@property (nonatomic
+           ,assign) NSInteger groupId;
 @end

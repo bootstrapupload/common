@@ -321,6 +321,7 @@
 - (HGoodsModel *)goodModel{
     if (!_goodModel) {
         _goodModel = [[HGoodsModel alloc] init];
+        _goodModel.groupId = self.groupId;
     }
     return _goodModel;
 }
