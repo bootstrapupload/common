@@ -6,6 +6,7 @@ import com.sf.common.dto.WsResult;
 import com.sf.hackthon.entity.Area;
 import com.sf.hackthon.service.IAreaService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +33,10 @@ public class AreaController {
    * 通过城市code获取所有区域
    */
   @GetMapping("/getAreaList/{cityCode}")
-  public WsResult getAreaList(@PathVariable Long cityCode) {
+  @ApiOperation("获取所有区域")
+  public WsResult<List<Area>> getAreaList(@PathVariable Long cityCode) {
 
-    WsResult rs = new WsResult();
+    WsResult<List<Area>> rs = new WsResult<>();
     EntityWrapper<Area> ew = new EntityWrapper<>();
     ew.eq("city_code", cityCode);
     List<Area> cityList = iAreaService.selectList(ew);

@@ -6,10 +6,11 @@ import com.sf.hackthon.entity.GroupJoinInfo;
 import com.sf.hackthon.service.IGroupInfoService;
 import com.sf.hackthon.service.IGroupJoinInfoService;
 import io.swagger.annotations.Api;
-import javax.validation.Valid;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,6 +36,7 @@ public class GroupJoinInfoController {
    * 判断是否该集货团是否已结束
    */
   @GetMapping("/estimateIsEnd")
+  @ApiOperation("验证集货团信息")
   public WsResult estimateIsEnd(Integer groupId) {
 
     groupInfoService.validateAvaliable(groupId);
@@ -44,7 +46,8 @@ public class GroupJoinInfoController {
   }
 
   @PostMapping("/new")
-  public WsResult newGroupJoinInfo(@Valid GroupJoinInfo groupJoinInfo) {
+  @ApiOperation("新增参团信息")
+  public WsResult newGroupJoinInfo(@RequestBody GroupJoinInfo groupJoinInfo) {
 
     groupJoinInfoService.newGroupJoinInfo(groupJoinInfo);
     WsResult ws = new WsResult();

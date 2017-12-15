@@ -2,9 +2,11 @@ package com.sf.hackthon.controller;
 
 
 import com.sf.common.dto.WsResult;
+import com.sf.hackthon.entity.GroupInfo;
 import com.sf.hackthon.service.IGroupInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +32,9 @@ public class GroupInfoController {
    */
   @GetMapping("/list")
   @ApiOperation("获取集件信息团列表")
-  public WsResult list() {
+  public WsResult<List<GroupInfo>> list() {
 
-    WsResult rs = new WsResult();
+    WsResult<List<GroupInfo>> rs = new WsResult();
     rs.setSuccess();
     rs.setData(groupInfoService.getAvaliableGroupInfs());
     return rs;

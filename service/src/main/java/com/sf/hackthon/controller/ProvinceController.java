@@ -6,6 +6,7 @@ import com.sf.common.dto.WsResult;
 import com.sf.hackthon.entity.Province;
 import com.sf.hackthon.service.IProvinceService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +32,10 @@ public class ProvinceController {
    * 获取所有省份
    */
   @GetMapping("/getProviceList")
-  public WsResult getProviceList() {
-    WsResult rs = new WsResult();
+  @ApiOperation("获取所有省份信息")
+  public WsResult<List<Province>> getProviceList() {
+
+    WsResult<List<Province>> rs = new WsResult();
     EntityWrapper<Province> ew = new EntityWrapper<>();
     List<Province> provinceList = iProvinceService.selectList(ew);
     rs.setData(provinceList);
