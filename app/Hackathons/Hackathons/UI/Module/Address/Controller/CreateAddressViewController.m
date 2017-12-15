@@ -322,6 +322,9 @@
     if (!_goodModel) {
         _goodModel = [[HGoodsModel alloc] init];
         _goodModel.groupId = self.groupId;
+        _goodModel.userId = @"33";
+        
+        
     }
     return _goodModel;
 }
