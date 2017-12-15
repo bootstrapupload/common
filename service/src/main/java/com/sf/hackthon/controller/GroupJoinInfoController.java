@@ -35,19 +35,19 @@ public class GroupJoinInfoController {
    * 判断是否该集货团是否已结束
    */
   @GetMapping("/estimateIsEnd")
-  public WsResult<GroupJoinInfo> estimateIsEnd(Integer groupId) {
+  public WsResult estimateIsEnd(Integer groupId) {
 
     groupInfoService.validateAvaliable(groupId);
-    WsResult<GroupJoinInfo> ws = new WsResult<>();
+    WsResult ws = new WsResult();
     ws.setSuccess();
     return ws;
   }
 
   @PostMapping("/new")
-  public WsResult<GroupJoinInfo> newGroupJoinInfo(@Valid GroupJoinInfo groupJoinInfo) {
+  public WsResult newGroupJoinInfo(@Valid GroupJoinInfo groupJoinInfo) {
 
     groupJoinInfoService.newGroupJoinInfo(groupJoinInfo);
-    WsResult<GroupJoinInfo> ws = new WsResult<>();
+    WsResult ws = new WsResult();
     ws.setSuccess();
     return ws;
 

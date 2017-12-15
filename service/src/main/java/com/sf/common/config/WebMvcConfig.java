@@ -12,8 +12,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- *
- * 
  * @author weijinliang
  * @since 2017-12-15 19:35
  */

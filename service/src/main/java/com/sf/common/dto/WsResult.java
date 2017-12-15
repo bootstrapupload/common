@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author weijinliang
  * @since 2017-12-15 19:34
  */
-public class WsResult<T> implements Serializable {
+public class WsResult implements Serializable {
 
   /**
    * 系统错误
@@ -35,7 +35,7 @@ public class WsResult<T> implements Serializable {
   /**
    * 返回结果对象
    */
-  private T data;
+  private Object data;
 
   /**
    * 创建结果.
@@ -82,11 +82,11 @@ public class WsResult<T> implements Serializable {
     this.msg = msg;
   }
 
-  public T getData() {
+  public Object getData() {
     return data;
   }
 
-  public void setData(T data) {
+  public void setData(Object data) {
     this.data = data;
   }
 }

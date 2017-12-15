@@ -32,9 +32,9 @@ public class AreaController {
    * 通过城市code获取所有区域
    */
   @GetMapping("/getAreaList/{cityCode}")
-  public WsResult<List<Area>> getAreaList(@PathVariable Long cityCode) {
+  public WsResult getAreaList(@PathVariable Long cityCode) {
 
-    WsResult<List<Area>> rs = new WsResult<>();
+    WsResult rs = new WsResult();
     EntityWrapper<Area> ew = new EntityWrapper<>();
     ew.eq("city_code", cityCode);
     List<Area> cityList = iAreaService.selectList(ew);

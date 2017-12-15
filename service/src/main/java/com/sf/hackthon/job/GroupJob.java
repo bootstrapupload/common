@@ -1,6 +1,7 @@
 package com.sf.hackthon.job;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.toolkit.IdWorker;
 import com.sf.common.Constants;
 import com.sf.hackthon.dao.GroupInfoMapper;
 import com.sf.hackthon.dao.ProMarketBaseMapper;
@@ -37,7 +38,7 @@ public class GroupJob {
   /**
    * 根据市场信息创建集团任务
    */
-  @Scheduled(fixedRate = 10000)
+  @Scheduled(fixedDelay = 10000)
   public void newGroupInfoWhenCreateTaskInfo() {
 
     logger.info("根据市场创建集团信息-->开始");
@@ -56,12 +57,12 @@ public class GroupJob {
       EntityWrapper<GroupInfo> gew = new EntityWrapper<>();
       gew.eq("pro_market_base_id", m.getId());
       Integer count = groupInfoMapper.selectCount(gew);
-      if (count != null || count < 1) {
+      if (count == null || count < 1) {
         GroupInfo g = new GroupInfo();
         BeanUtils.copyProperties(m, g);
         g.setProMarketBaseId(m.getId());
         g.setGroupType(GroupType.CONUTRY.getValue());
-        g.setGroupName(m.getMktName());
+        g.setGroupName(m.getMktName() + String.valueOf(IdWorker.getId()).substring(13) + "期");
         g.setAdvImg(m.getMktImg());
         g.setGroupState(GroupInfoState.UNFINISH.getValue());
         g.setGroupCount(0);

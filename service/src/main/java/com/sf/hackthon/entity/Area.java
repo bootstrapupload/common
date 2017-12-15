@@ -1,11 +1,10 @@
 package com.sf.hackthon.entity;
 
-import java.io.Serializable;
-
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
+import java.io.Serializable;
 
 /**
  * <p> 地址demo </p>
@@ -15,72 +14,72 @@ import com.baomidou.mybatisplus.activerecord.Model;
  */
 public class Area extends Model<Area> {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	@TableId(value="id", type= IdType.AUTO)
-	private Integer id;
-	
-	/**
-	 * 区域代码
-	 */
-	private String code;
-	
-	/**
-	 * 区域名字
-	 */
-	private String name;
-	
-	/**
-	 * 市区代码
-	 */
-	@TableField("city_code")
-	private String cityCode;
-	
+  @TableId(value = "id", type = IdType.AUTO)
+  private Integer id;
 
-	public Integer getId() {
-		return id;
-	}
+  /**
+   * 区域代码
+   */
+  private String code;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  /**
+   * 区域名字
+   */
+  private String name;
 
-	public String getCode() {
-		return code;
-	}
+  /**
+   * 市区代码
+   */
+  @TableField("city_code")
+  private String cityCode;
 
-	public void setCode(String code) {
-		this.code = code;
-	}
 
-	public String getName() {
-		return name;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public String getCityCode() {
-		return cityCode;
-	}
+  public String getCode() {
+    return code;
+  }
 
-	public void setCityCode(String cityCode) {
-		this.cityCode = cityCode;
-	}
+  public void setCode(String code) {
+    this.code = code;
+  }
 
-	@Override
-	protected Serializable pkVal() {
-		return this.id;
-	}
+  public String getName() {
+    return name;
+  }
 
-	@Override
-	public String toString() {
-		return "Area{" +
-			", id=" + id +
-			", code=" + code +
-			", name=" + name +
-			", cityCode=" + cityCode +
-			"}";
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getCityCode() {
+    return cityCode;
+  }
+
+  public void setCityCode(String cityCode) {
+    this.cityCode = cityCode;
+  }
+
+  @Override
+  protected Serializable pkVal() {
+    return this.id;
+  }
+
+  @Override
+  public String toString() {
+    return "Area{" +
+        ", id=" + id +
+        ", code=" + code +
+        ", name=" + name +
+        ", cityCode=" + cityCode +
+        "}";
+  }
 }

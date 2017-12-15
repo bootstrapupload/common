@@ -18,6 +18,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 public class HackthondayApplication {
 
+  private HackthondayApplication() {
+
+  }
+
   public static void main(String[] args) {
     SpringApplication.run(HackthondayApplication.class, args);
   }

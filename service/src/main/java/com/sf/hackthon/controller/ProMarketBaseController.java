@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.sf.common.dto.WsResult;
 import com.sf.hackthon.entity.ProMarketBase;
+import com.sf.hackthon.entity.enums.ProMarketBaseState;
 import com.sf.hackthon.service.IProMarketBaseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,8 +36,8 @@ public class ProMarketBaseController {
 
   @GetMapping("/getMarketById/{id}")
   @ApiOperation("通过id获取一个地址详情")
-  public WsResult<ProMarketBase> getMarketById(@PathVariable int id) {
-    WsResult<ProMarketBase> rs = new WsResult<>();
+  public WsResult getMarketById(@PathVariable int id) {
+    WsResult rs = new WsResult();
     EntityWrapper<ProMarketBase> ew = new EntityWrapper<>();
     ew.eq("id", id);
     ProMarketBase data = iProMarketBaseService.selectOne(ew);
@@ -47,11 +48,11 @@ public class ProMarketBaseController {
 
   @GetMapping("/page")
   @ApiOperation("分页查询列表")
-  public WsResult<Page<ProMarketBase>> page(
+  public WsResult page(
       @RequestParam(value = "page", required = false, defaultValue = "1") int pageNum,
       @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
 
-    WsResult<Page<ProMarketBase>> rs = new WsResult<>();
+    WsResult rs = new WsResult();
     Page pages = new Page(pageNum, size);
     EntityWrapper<ProMarketBase> ew = new EntityWrapper<>();
     ew.where("id>1000");
@@ -63,9 +64,9 @@ public class ProMarketBaseController {
 
   @PostMapping("/insert")
   @ApiOperation("新增市场")
-  public WsResult<Boolean> insert(@RequestBody @Valid ProMarketBase marketBase) {
+  public WsResult insert(@RequestBody @Valid ProMarketBase marketBase) {
 
-    WsResult<Boolean> rs = new WsResult<>();
+    WsResult rs = new WsResult();
     Boolean data = iProMarketBaseService.insert(marketBase);
     rs.setData(data);
     rs.setSuccess();
@@ -74,10 +75,9 @@ public class ProMarketBaseController {
 
   @PostMapping("/update")
   @ApiOperation("更新")
-  public WsResult<Boolean> update(@RequestBody ProMarketBase marketBase) {
+  public WsResult update(@RequestBody ProMarketBase marketBase) {
 
-    WsResult<Boolean> rs = new WsResult<>();
-
+    WsResult rs = new WsResult();
     Boolean data = iProMarketBaseService.updateById(marketBase);
     rs.setData(data);
     rs.setSuccess();
@@ -86,10 +86,10 @@ public class ProMarketBaseController {
 
   @PostMapping("/delete")
   @ApiOperation("删除")
-  public WsResult<Boolean> delete(@RequestBody ProMarketBase marketBase) {
-    marketBase.setMktState(1);
-    WsResult<Boolean> rs = new WsResult<>();
+  public WsResult delete(@RequestBody ProMarketBase marketBase) {
 
+    marketBase.setMktState(ProMarketBaseState.UNVALID.getValue());
+    WsResult rs = new WsResult();
     Boolean data = iProMarketBaseService.updateById(marketBase);
     rs.setData(data);
     rs.setSuccess();

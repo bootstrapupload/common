@@ -34,9 +34,9 @@ public class CityController {
    */
   @GetMapping("/getCityList/{provinceCode}")
   @ApiOperation("通过省级code获取所有市区")
-  public WsResult<List<City>> getCityList(@PathVariable Long provinceCode) {
+  public WsResult getCityList(@PathVariable Long provinceCode) {
 
-    WsResult<List<City>> rs = new WsResult<>();
+    WsResult rs = new WsResult();
     EntityWrapper<City> ew = new EntityWrapper<>();
     ew.eq("province_code", provinceCode);
     List<City> cityList = iCityService.selectList(ew);

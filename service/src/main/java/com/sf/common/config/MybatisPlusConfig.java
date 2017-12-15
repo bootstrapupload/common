@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Profile;
  * mybatis-plus 配置类
  *
  * @author YANGLIN
- * @since  2017-12-15 13:55
+ * @since 2017-12-15 13:55
  */
 @Configuration
 @MapperScan("com.sf.**.dao*")

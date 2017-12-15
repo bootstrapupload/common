@@ -20,48 +20,40 @@ import org.hibernate.validator.constraints.NotBlank;
 public class GroupJoinInfo extends Model<GroupJoinInfo> {
 
   private static final long serialVersionUID = 1L;
-
+  private static final String PATTERN_TELEPHONE = "^((17[0-9])|(14[0-9])|(13[0-9])|(15[^4,\\\\D])|(18[0,5-9]))\\\\d{8}$";
   /**
    * 主键
    */
   @TableId(value = "id", type = IdType.AUTO)
   private Integer id;
-
   /**
    * 省份编码
    */
   @TableField("province_code")
   @NotBlank
   private String provinceCode;
-
   /**
    * 城市编码
    */
   @TableField("city_code")
   @NotBlank
   private String cityCode;
-
   /**
    * 地区编码
    */
   @TableField("area_code")
   private String areaCode;
-
   /**
    * 详细地址
    */
   @NotBlank
   private String address;
-
   /**
    * 寄件人名称
    */
   @TableField("sender_name")
   @NotBlank
   private String senderName;
-
-  private static final String PATTERN_TELEPHONE = "^((17[0-9])|(14[0-9])|(13[0-9])|(15[^4,\\\\D])|(18[0,5-9]))\\\\d{8}$";
-
   /**
    * 寄件人电话
    */

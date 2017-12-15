@@ -1,17 +1,16 @@
 package com.sf.hackthon.controller;
 
 
-import java.util.List;
-import javax.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sf.common.dto.WsResult;
 import com.sf.hackthon.entity.Province;
 import com.sf.hackthon.service.IProvinceService;
 import io.swagger.annotations.Api;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p> 前端控制器  </p>
@@ -26,21 +25,20 @@ public class ProvinceController {
 
   @Autowired
   private IProvinceService iProvinceService;
-  
-  
+
+
   /**
    * 获取所有省份
-   * @return
    */
   @GetMapping("/getProviceList")
-  public WsResult<List<Province>> getProviceList() {
-    WsResult<List<Province>> rs = new WsResult<>();
+  public WsResult getProviceList() {
+    WsResult rs = new WsResult();
     EntityWrapper<Province> ew = new EntityWrapper<>();
     List<Province> provinceList = iProvinceService.selectList(ew);
     rs.setData(provinceList);
     rs.setSuccess();
     return rs;
   }
-  
+
 }
 
