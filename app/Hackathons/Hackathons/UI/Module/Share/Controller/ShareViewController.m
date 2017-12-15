@@ -33,9 +33,29 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)save:(id)sender {
+    UIImageWriteToSavedPhotosAlbum([self snapshotSingleView:self.img.superview], self, @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:), nil);
+    NSString*message =@"提示";
+    
+    message =@"成功保存到相册";
+    [MBProgressHUD showInfoMessage:message];
+}
+- (void)imageSavedToPhotosAlbum:(UIImage*)image didFinishSavingWithError:  (NSError*)error contextInfo:(id)contextInfo{
+    
     
 }
-
+/**
+ *  某个View单独进行截图
+ */
+- (UIImage *)snapshotSingleView:(UIView *)view
+{
+    CGRect rect =  view.frame;
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [view.layer renderInContext:context];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 /*
 #pragma mark - Navigation
 

@@ -81,10 +81,10 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     self.goodProgress.type                     = YLProgressBarTypeFlat;
-    self.goodProgress.indicatorTextDisplayMode = YLProgressBarIndicatorTextDisplayModeProgress;
+    self.goodProgress.indicatorTextDisplayMode = YLProgressBarIndicatorTextDisplayModeTrack;
 //    self.goodProgress.behavior                 = YLProgressBarBehaviorIndeterminate;
 //    self.goodProgress.stripesOrientation       = YLProgressBarStripesOrientationVertical;
-    [self.goodProgress setProgress:self.goodsModel.groupCount/self.goodsModel.groupLimit*100 animated:YES];
+    [self.goodProgress setProgress:self.goodsModel.groupCount*1.f/self.goodsModel.groupLimit*1.f animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
