@@ -40,7 +40,10 @@
     self.goodLeftNum.text = NSStringFormat(@"还差%ld人即可成团" ,self.goodsModel.groupLimit - self.goodsModel.groupCount);
     self.goodDate.text = NSStringFormat(@"截止日期：%@",self.goodsModel.groupEndTime);
     self.goodUseRequire.preferredMaxLayoutWidth = SCREEN_WIDTH - 20;
-    self.goodUseRequire.text  = self.goodsModel.groupRule;
+//    self.goodUseRequire.text  = self.goodsModel.groupRule;
+    
+    NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[self.goodsModel.groupRule dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    self.goodUseRequire.attributedText = attrStr;
     [self.goodImg setImageWithURL:kImgNormalUrl(self.goodsModel.advImg) placeholder:kPlaceholder];
     [self.btnPartin setBackgroundImage:[UIImage imageWithColor:C6] forState:UIControlStateNormal];
     [self.btnPartin setTitle:@"报名集货" forState:UIControlStateNormal];

@@ -313,7 +313,7 @@
         ShareViewController *svc = [[ShareViewController alloc] init];
         [self.navigationController pushViewController:svc animated:YES];
     } failure:^(NSError *error) {
-        
+        [MBProgressHUD showInfoMessage:error.domain];
     }];
     
 }

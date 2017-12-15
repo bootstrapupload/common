@@ -29,7 +29,7 @@
 + (NSURLSessionTask *)groupJoinInfo:(HGoodsModel *)model
                             success:(void (^)(NSInteger code, NSString *msg,id obj))success
                             failure:(void (^)(NSError *error))failure{
-    NSURLSessionTask *task = [[HNetwork sharedManager] POST:NSStringFormat(@"groupJoinInfo/new") parameters:[model modelToJSONData] success:^(NSInteger code, id responseObject) {
+    NSURLSessionTask *task = [[HNetwork sharedManager] POST:NSStringFormat(@"groupJoinInfo/new") parameters:[model modelToJSONObject] success:^(NSInteger code, id responseObject) {
         if (!success) return;
         NSString *msg = [responseObject objectForKey:kMessage];
         success(code,msg,responseObject);
