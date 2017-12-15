@@ -84,7 +84,7 @@
     self.goodProgress.indicatorTextDisplayMode = YLProgressBarIndicatorTextDisplayModeProgress;
 //    self.goodProgress.behavior                 = YLProgressBarBehaviorIndeterminate;
 //    self.goodProgress.stripesOrientation       = YLProgressBarStripesOrientationVertical;
-    [self.goodProgress setProgress:self.goodsModel.groupCount/self.goodsModel.groupLimit animated:YES];
+    [self.goodProgress setProgress:self.goodsModel.groupCount/self.goodsModel.groupLimit*100 animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
