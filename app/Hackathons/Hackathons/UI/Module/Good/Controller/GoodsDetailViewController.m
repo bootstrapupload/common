@@ -33,7 +33,7 @@
     self.title = @"集货详情";
     self.goodTitle.text = self.goodsModel.groupName;
     self.goodRequire.text = NSStringFormat(@"%ld-%ldkg每日最低需寄%ld件",self.goodsModel.weightMin/1000,self.goodsModel.weightMax/1000,self.goodsModel.dailyMinPackage);
-    self.goodInfoView.label1.text = NSStringFormat(@"低至￥%ld",self.goodsModel.basePrice*100);
+    self.goodInfoView.label1.text = NSStringFormat(@"低至￥%ld元",self.goodsModel.basePrice/100);
     self.goodInfoView.label2.text =NSStringFormat(@"%ldkg",self.goodsModel.weightMin/1000);
     self.goodInfoView.frame = CGRectMake(SCREEN_WIDTH - 120, 40, 90, 100);
     
