@@ -1,0 +1,61 @@
+//
+//  PrefixHeader.pch
+//  health
+//
+//  Created by XuQuan on 20/09/2017.
+//  Copyright © 2017 XuQuan. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#define LBXScan_Define_Native  //包含native库
+#define LBXScan_Define_UI     //包含界面库
+#import <UIKit/UIKit.h>
+
+#import <YYKit/YYKit.h>
+#import "UIUtil.h"
+#import "CommonDefine.h"
+//#import "JMRoundedCorner.h"
+#import "AppDelegate.h"
+#import "AppDelegate+AppService.h"
+
+#import "RootViewController.h"
+#import "RootNavigationController.h"
+#import "PPNetworkHelper.h"
+
+#import "URLMacros.h"
+#import "UtilsMacros.h"
+#import "CommonMacros.h"
+#import "FontAndColorMacros.h"
+#import "HNetwork.h"
+
+#import "UserManager.h"
+#import <MJRefresh.h>
+#import <BlocksKit+UIKit.h>
+#import "BaseTableViewCell.h"
+#import "BaseCollectionViewCell.h"
+//#import "UIBaseTableViewController.h"
+//#import "BaseCollectionViewController.h"
+#import "MBProgressHUD+XY.h"
+#import "JHUD.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//颜色
+#define C0 UIColorHex(0X000000) // XJM:black
+
+#define C1 UIColorHex(0X3A3A3A) // 深黑:标题，导航
+#define C2 UIColorHex(0X8C8C8C) // 深灰
+#define C3 UIColorHex(0XD8DDDC) // 浅灰，分割线颜色
+#define C4 UIColorHex(0XFFFFFF) // white，背景色
+#define C5 UIColorHex(0X9B8860) // 香槟色 强调和突出的文字,金黄色边框
+#define C6 UIColorHex(0X66B3BF) // 绛色，图标颜色，
+#define C7 UIColorHex(0XC4B8B8) // 紫色，特别强调和突出的按钮
+#define C8 UIColorHex(/*0X989898*/0X3B3B3B) // 灰色，主题详情描述信息颜色
+
+
+#define C11 UIColorHex(0X4A4A4A) // XJM:需要确认的颜色:暗黑，与C1差不多，颜色浅一点
+
+
+#endif /* PrefixHeader_pch */

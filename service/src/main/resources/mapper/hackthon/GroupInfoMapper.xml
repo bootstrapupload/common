@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sf.hackthon.dao.GroupInfoMapper">
+
+  <update id="incrGroupCount">
+
+    <![CDATA[
+    UPDATE `group_info`
+    SET group_count  = group_count + 1,
+      group_end_time = NOW()
+    WHERE
+      group_count < group_limit
+      AND group_end_time > NOW()
+      AND group_state = #{state}
+      AND id = #{groupId}
+    ]]>
+
+  </update>
+
+
+  <update id="endGroup">
+
+    <![CDATA[
+    UPDATE `group_info`
+    SET group_state = #{finishState}
+    WHERE
+      group_count >= group_limit
+      AND group_state = #{unFinishState}
+    ]]>
+
+  </update>
+
+</mapper>
