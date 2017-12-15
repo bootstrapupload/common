@@ -33,9 +33,9 @@
 /**开发服务器*/
 //#define URL_main @"http://118.89.17.227/jiuetongApi/"
 //#define URL_main @"http://119.23.163.94:8888/jiuetongApi/"
+#define URL_main @"http://10.2.4.93:18080/hackthonday/"
 
-
-#define URL_main @"http://10.118.45.97:18080/hackthonday/"
+//#define URL_main @"http://10.118.45.97:18080/hackthonday/"
 
 #define URL_upload @"http://118.89.17.227:8088/"
 //#define URL_upload @"http://119.23.163.94:8088/"

@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "SocialSDK.h"
+#import "WXApi.h"
 
 @interface AppDelegate ()
 
@@ -16,12 +18,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    UINavigationBar *navBar= [UINavigationBar appearance];
-    //    [navBar setShadowImage:[UIImage imageNamed:@"navBarBg"]];
-    //    [navBar setBackgroundImage:[UIImage imageNamed:@"navBarBg"] forBarMetrics:UIBarMetricsDefault];
-    [navBar setTintColor:C6];
-    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName : C6}];
-    
+//    UINavigationBar *navBar= [UINavigationBar appearance];
+//    [navBar setTintColor:C6];
+//    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName : C6}];
+    [[GSPlatformParamConfigManager share] addWeChatPlatformConfigAppID:THIRDPARTY_WEIXIN_APPID];
     //初始化window
     [self initWindow];
     
@@ -73,6 +73,20 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return [[GSSocialManager share] handleOpenURL:url];
+}
 
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+//    if ([[GSSocialManager share] handleOpenURL:url]) {
+//        return YES;
+//    }
+//    
+//    if ([url.scheme caseInsensitiveCompare:THIRDPARTY_WEIXIN_APPID] == NSOrderedSame) {
+//        return [WXApi handleOpenURL:url delegate:self];
+//    }
+//    
+//    return YES;
+//}
 
 @end

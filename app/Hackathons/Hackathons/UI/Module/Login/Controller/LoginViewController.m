@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "GSShareManager.h"
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *tfbg1;
 @property (weak, nonatomic) IBOutlet UIView *tfbg2;
@@ -52,6 +53,9 @@
 }
 
 - (IBAction)toLogin:(id)sender {
+    
+
+//
     
     KPostNotification(KNotificationLoginStateChange, @YES);
     return;

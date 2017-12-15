@@ -12,8 +12,9 @@
 #define CommonMacros_h
 
 #pragma mark - ———————— 第三方常量 ————————
-#define kBaiduMapAPPKey @""
-#define kPgyAPPKey @""
+
+#define  THIRDPARTY_WEIXIN_APPID     @"wx4ada4732eb2ac1b8"
+
 
 #pragma mark - ——————— 用户相关 ————————
 //登录状态改变通知

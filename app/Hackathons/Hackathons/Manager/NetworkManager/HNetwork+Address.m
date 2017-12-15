@@ -8,6 +8,7 @@
 
 #import "HNetwork+Address.h"
 #import "AddressPage.h"
+#import "HAreaModel.h"
 
 @implementation HNetwork (Address)
 + (NSURLSessionTask *)requestPage:(NSInteger)page
@@ -34,6 +35,20 @@
     return task;
 }
 
++ (NSURLSessionTask *)insertAddress:(HAddressModel *)model
+                            success:(void (^)(NSInteger code, NSString *msg,id obj))success
+                            failure:(void (^)(NSError *error))failure{
+    NSURLSessionTask *task = [[HNetwork sharedManager] POST:@"address/insert" parameters:[model modelToJSONObject] success:^(NSInteger code, id responseObject) {
+        if (!success) return;
+        NSString *msg = [responseObject objectForKey:kMessage];
+        success(code,msg,responseObject);
+    } failure:^(NSInteger code, NSError *error) {
+        failure(error);
+    }];
+    
+    return task;
+}
+
 + (NSURLSessionTask *)updateAddress:(HAddressModel *)model success:(void (^)(NSInteger, NSString *, id))success failure:(void (^)(NSError *))failure{
     
     NSURLSessionTask *task = [[HNetwork sharedManager] POST:@"address/update" parameters:[model modelToJSONObject] success:^(NSInteger code, id responseObject) {
@@ -46,5 +61,56 @@
     
     return task;
 }
+
+
++ (NSURLSessionTask *)getProviceList:(void (^)(NSInteger code, NSString *msg,id obj))success
+                             failure:(void (^)(NSError *error))failure{
+    NSURLSessionTask *task = [[HNetwork sharedManager] GET:@"province/getProviceList" parameters:@{} success:^(NSInteger code, id responseObject) {
+        if (!success) return;
+        NSString *msg = [responseObject objectForKey:kMessage];
+        
+        NSArray *arr = [NSArray modelArrayWithClass:[HAreaModel class] json:[responseObject objectForKey:kData]];
+        
+        success(code,msg,arr);
+    } failure:^(NSInteger code, NSError *error) {
+        failure(error);
+    }];
+    
+    return task;
+}
+
++ (NSURLSessionTask *)getCityList:(NSString *)provinceCode
+                          success:(void (^)(NSInteger code, NSString *msg,id obj))success
+                          failure:(void (^)(NSError *error))failure{
+    NSURLSessionTask *task = [[HNetwork sharedManager] GET:NSStringFormat(@"city/getCityList/%@",provinceCode) parameters:@{} success:^(NSInteger code, id responseObject) {
+        if (!success) return;
+        NSString *msg = [responseObject objectForKey:kMessage];
+        NSArray *arr = [NSArray modelArrayWithClass:[HAreaModel class] json:[responseObject objectForKey:kData]];
+        
+        success(code,msg,arr);
+    } failure:^(NSInteger code, NSError *error) {
+        failure(error);
+    }];
+    
+    return task;
+}
+
++ (NSURLSessionTask *)getAreaList:(NSString *)cityCode
+                          success:(void (^)(NSInteger code, NSString *msg,id obj))success
+                          failure:(void (^)(NSError *error))failure{
+    NSURLSessionTask *task = [[HNetwork sharedManager] GET:NSStringFormat(@"area/getAreaList/%@",cityCode) parameters:@{} success:^(NSInteger code, id responseObject) {
+        if (!success) return;
+        NSString *msg = [responseObject objectForKey:kMessage];
+        NSArray *arr = [NSArray modelArrayWithClass:[HAreaModel class] json:[responseObject objectForKey:kData]];
+        
+        success(code,msg,arr);
+    } failure:^(NSInteger code, NSError *error) {
+        failure(error);
+    }];
+    
+    return task;
+}
+
+
 
 @end

@@ -7,9 +7,13 @@
 //
 
 #import "HomeViewController.h"
-#import "HNetwork+Address.h"
+#import "HNetwork+Goods.h"
 #import "AddressPage.h"
 #import "HAddressModel.h"
+#import "HomeCell.h"
+#import "GoodsModel.h"
+#import "CreateAddressViewController.h"
+#import "GoodsDetailViewController.h"
 @interface HomeViewController ()
 
 @end
@@ -21,26 +25,22 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeCell" bundle:nil] forCellReuseIdentifier:[HomeCell cellId]];
     [self onRefresh];
 }
 
 - (void)onLoad{
-    [HNetwork requestPage:currPage success:^(NSInteger code, NSString *msg, AddressPage * obj) {
-        NSLog(@"%@",obj);
+    
+    [HNetwork groupInf:^(NSInteger code, NSString *msg, NSArray* obj) {
         [self endRefrehing];
-        if (obj.current == 1) {
-            [self.dataSet removeAllObjects];
-        }
-        [self.dataSet addObjectsFromArray:[obj.records mutableCopy]];
+        [self.dataSet removeAllObjects];
+        [self.dataSet addObjectsFromArray:[obj mutableCopy]];
         [self reLoadData];
-        if (currPage>=obj.pages) {
-            [self setNoMoreData];
-        }
+        [self setNoMoreData];
     } failure:^(NSError *error) {
         [self endRefrehing];
-        [self setNoMoreData];
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,39 +61,43 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    
-    HAddressModel *model = [self.dataSet objectAtIndex:indexPath.row];
+    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:[HomeCell cellId]];
+    GoodsModel *model = self.dataSet[indexPath.row];
     [UIUtil setSeparatorWithTableViewCell:cell];
     [UIUtil setSeparatorWithTableView:tableView];
-    cell.textLabel.text = NSStringFormat(@"%ld.%@",indexPath.row + 1,model.name);
-    cell.detailTextLabel.text = model.code;
+    [cell setDataInfo:model];
+    cell.labelDetail.text = NSStringFormat(@"%ld",indexPath.row +1 );
     return cell;
+#pragma --- 接口
+    //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    //
+    //    HAddressModel *model = [self.dataSet objectAtIndex:indexPath.row];
+    //    [UIUtil setSeparatorWithTableViewCell:cell];
+    //    [UIUtil setSeparatorWithTableView:tableView];
+    //    cell.textLabel.text = NSStringFormat(@"%ld.%@",indexPath.row + 1,model.name);
+    //    cell.detailTextLabel.text = model.code;
+    //    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [MBProgressHUD showSuccessMessage:@"操作成功"];
-    return;
+    GoodsModel *model = self.dataSet[indexPath.row];
+    GoodsDetailViewController *gvc = [[GoodsDetailViewController alloc] init];
+    gvc.goodsModel = model;
+    [self.navigationController pushViewController:gvc animated:YES];
     
-    HAddressModel *model = [self.dataSet objectAtIndex:indexPath.row];
-    [model setName:NSStringFormat(@"%@1",model.name)];
-    [HNetwork updateAddress:model success:^(NSInteger code, NSString *msg, id obj) {
-        if (code == 1) {
-            
-            [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
+
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 44;
+    return [HomeCell height];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
 
     return self.dataSet.count;
     
@@ -104,3 +108,4 @@
 }
 
 @end
+

@@ -108,7 +108,7 @@
 
 //#define kImgUrlNoUpload(imgUrlStr) [NSURL URLWithString:[NSString stringWithFormat:@"http://www.my5meifen.com/upload/file/%@",[imgUrlStr stringByReplacingOccurrencesOfString:@"," withString:@""]]]
 
-#define kImgNormalUrl(imgUrlStr) [NSURL URLWithString:[imgUrlStr stringByReplacingOccurrencesOfString:@"\\" withString:@"/"]]
+#define kImgNormalUrl(imgUrlStr) [NSURL URLWithString:imgUrlStr]
 
 #define kPlaceholder [UIImage imageNamed:@"image_placeholder"]
 #define kPlaceholderHead [UIImage imageNamed:@"image_placeholder_head"]

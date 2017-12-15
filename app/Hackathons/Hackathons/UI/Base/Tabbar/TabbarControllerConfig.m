@@ -92,23 +92,23 @@
 - (NSArray *)tabBarItemsAttributesForController {
     NSDictionary *firstTabBarItemsAttributes = @{
                                                  CYLTabBarItemTitle : @"首页",
-                                                 CYLTabBarItemImage : @"",  /* NSString and UIImage are supported*/
-                                                 CYLTabBarItemSelectedImage : @"", /* NSString and UIImage are supported*/
+                                                 CYLTabBarItemImage : @"home_normal",  /* NSString and UIImage are supported*/
+                                                 CYLTabBarItemSelectedImage : @"home_highlight", /* NSString and UIImage are supported*/
                                                  };
     NSDictionary *secondTabBarItemsAttributes = @{
                                                   CYLTabBarItemTitle : @"发现",
-                                                  CYLTabBarItemImage : @"",
-                                                  CYLTabBarItemSelectedImage : @"",
+                                                  CYLTabBarItemImage : @"discovery_normal",
+                                                  CYLTabBarItemSelectedImage : @"discovery_highlight",
                                                   };
     NSDictionary *thirdTabBarItemsAttributes = @{
-                                                 CYLTabBarItemTitle : @"消息",
-                                                 CYLTabBarItemImage : @"",
-                                                 CYLTabBarItemSelectedImage : @"",
+                                                 CYLTabBarItemTitle : @"关注",
+                                                 CYLTabBarItemImage : @"follow_normal",
+                                                 CYLTabBarItemSelectedImage : @"follow_highlight",
                                                  };
     NSDictionary *fourthTabBarItemsAttributes = @{
                                                   CYLTabBarItemTitle : @"我的",
-                                                  CYLTabBarItemImage : @"我的",
-                                                  CYLTabBarItemSelectedImage : @"我的（选中）"
+                                                  CYLTabBarItemImage : @"account_normal",
+                                                  CYLTabBarItemSelectedImage : @"account_highlight"
                                                   };
     NSArray *tabBarItemsAttributes = @[
                                        firstTabBarItemsAttributes,

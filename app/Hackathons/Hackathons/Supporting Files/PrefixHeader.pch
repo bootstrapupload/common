@@ -50,7 +50,7 @@
 #define C3 UIColorHex(0XD8DDDC) // 浅灰，分割线颜色
 #define C4 UIColorHex(0XFFFFFF) // white，背景色
 #define C5 UIColorHex(0X9B8860) // 香槟色 强调和突出的文字,金黄色边框
-#define C6 UIColorHex(0X66B3BF) // 绛色，图标颜色，
+#define C6 UIColorHex(0XFF6532) // 主色，图标颜色，
 #define C7 UIColorHex(0XC4B8B8) // 紫色，特别强调和突出的按钮
 #define C8 UIColorHex(/*0X989898*/0X3B3B3B) // 灰色，主题详情描述信息颜色
 

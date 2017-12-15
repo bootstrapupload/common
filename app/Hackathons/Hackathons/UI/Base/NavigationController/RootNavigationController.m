@@ -30,7 +30,7 @@
 //    UIColor *rightColor = [UIColor colorWithRed:35/255.0f green:195/255.0f blue:95/255.0f alpha:1.0f];
 
 //    UIImage *bgImage = [UIUtil BgImageFromColors:@[leftColor,rightColor] withFrame:navBar.bounds];
-    UIImage *bgImage = [UIImage imageWithColor:[UIColor colorWithRed:83/255.0f green:166/255.0f blue:180/255.0f alpha:1.0f]];
+    UIImage *bgImage = [UIImage imageWithColor:C6];
     
     //导航栏背景图
     [navBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];

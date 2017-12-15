@@ -66,11 +66,9 @@ static NSString * kUserDefaultsFCSessionId = @"kUserDefaultsFCSessionId";
         NSInteger status = [[responseObject objectForKey:kStatus] integerValue];
         if (status == -1) {
             [self handleNeedLogin];
-            
-            
             return ;
         }else if (status != 1){
-            failure(-401,[NSError errorWithDomain:[responseObject objectForKey:@"message"] code:-401 userInfo:nil]);
+            failure(-401,[NSError errorWithDomain:[responseObject objectForKey:kMessage] code:-401 userInfo:nil]);
             return;
         }
         
@@ -91,7 +89,7 @@ static NSString * kUserDefaultsFCSessionId = @"kUserDefaultsFCSessionId";
     
     NSURLSessionTask* task = [PPNetworkHelper GET:[self fc_fixedUrl:URLString] parameters:parameters success:^(id responseObject) {
         NSInteger code = [[responseObject objectForKey:kStatus] integerValue];
-        if (code == -1) {
+        if (code == -400) {
             [self handleNeedLogin];
         }
         
